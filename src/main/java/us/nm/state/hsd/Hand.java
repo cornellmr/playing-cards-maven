@@ -3,11 +3,17 @@ package us.nm.state.hsd;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 
-public class Hand implements Sortable<Card> {
+public class Hand implements Sortable<Card>, Iterable <Card> {
   private List<Card> cards = new ArrayList<>();
-
+  public Hand(Card...cards) {
+    for(Card card: cards){
+      add(card);
+      
+    }
+  }
   @Override
   public void sort() {
     Collections.sort(cards);
@@ -31,4 +37,13 @@ public class Hand implements Sortable<Card> {
     return (cards.toString());
   }
 
+  @Override
+  public Iterator<Card> iterator() {
+    return cards.iterator();
+  }
+  
+  public int size(){
+    return cards.size();
+  }
+  
 }
